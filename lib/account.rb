@@ -10,12 +10,12 @@ class Account
 
   def deposit(amount, date)
     @balance += amount
-    update_statement(date, amount)
+    update_statement(date, amount, "credit")
   end
 
   def withdrawal(amount, date)
     @balance -= amount
-    update_statement(date, -amount)
+    update_statement(date, amount, "debit")
   end
 
   def print_statement
@@ -24,8 +24,8 @@ class Account
 
   private
 
-  def update_statement(date, amount)
-    amount > 0 ? @statement.push("#{date} || #{'%.2f' % amount} || || #{'%.2f' % @balance}") :
+  def update_statement(date, amount, type)
+    type == "credit" ? @statement.push("#{date} || #{'%.2f' % amount} || || #{'%.2f' % @balance}") :
                 @statement.push("#{date} || || #{'%.2f' % amount} || #{'%.2f' % @balance}")
   end
 
