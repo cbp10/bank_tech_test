@@ -1,10 +1,11 @@
+require_relative 'statement_printer'
 class Account
-  attr_reader :balance, :statement
-  HEADER = "date || credit || debit || balance"
+  attr_reader :balance, :statement, :printer
 
-  def initialize(balance = 0)
+  def initialize(balance = 0, printer = StatementPrinter)
     @balance = balance
     @statement = []
+    @printer = printer
   end
 
   def deposit(amount, date)
@@ -18,10 +19,7 @@ class Account
   end
 
   def print_statement
-    add_header_row
-    @statement.each { |row|
-      puts row
-    }
+    printer.print_statement(statement)
   end
 
   private
