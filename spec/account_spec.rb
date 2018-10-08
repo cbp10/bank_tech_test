@@ -11,4 +11,8 @@ describe Account do
     expect(account.balance).to eq 1000
   end
 
+  it 'should decrease balance when withdrawal is made' do
+    expect(account).to respond_to(:withdrawal).with(2).arguments
+  end
+
 end
