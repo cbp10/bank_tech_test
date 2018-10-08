@@ -24,6 +24,7 @@ describe Account do
 
   it 'should print statement' do
     expect(account).to respond_to(:print_statement)
+    expect { account.print_statement }.to output("date || credit || debit || balance\n").to_stdout
   end
 
 end
