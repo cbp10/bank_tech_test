@@ -17,4 +17,9 @@ describe Account do
     expect(account.balance).to eq -500
   end
 
+  it 'should store transaction row' do
+    account.deposit(1000, "10/01/2012")
+    expect(account.statement).to include("10/01/2012 || 1000.00 || || 1000.00")
+  end
+
 end
