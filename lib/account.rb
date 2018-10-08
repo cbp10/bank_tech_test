@@ -16,6 +16,9 @@ class Account
     update_statement(date, -amount)
   end
 
+  def print_statement
+  end
+
   private
 
   def update_statement(date, amount)

@@ -22,4 +22,8 @@ describe Account do
     expect(account.statement).to include("10/01/2012 || 1000.00 || || 1000.00")
   end
 
+  it 'should print statement' do
+    expect(account).to respond_to(:print_statement)
+  end
+
 end
