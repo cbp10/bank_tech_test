@@ -14,7 +14,7 @@ describe Account do
   it 'should decrease balance when withdrawal is made' do
     expect(account).to respond_to(:withdrawal).with(2).arguments
     account.withdrawal(500, "14/01/2012")
-    expect(account.balance).to eq -500
+    expect(account.balance).to eq(-500)
   end
 
   it 'should store transaction row' do

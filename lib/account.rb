@@ -25,8 +25,9 @@ class Account
   private
 
   def update_statement(date, amount, type)
-    type == "credit" ? @statement.push("#{date} || #{'%.2f' % amount} || || #{'%.2f' % @balance}") :
-                @statement.push("#{date} || || #{'%.2f' % amount} || #{'%.2f' % @balance}")
+    type == "credit" ? 
+    @statement.push("#{date} || #{'%.2f' % amount} || || #{'%.2f' % @balance}") :
+    @statement.push("#{date} || || #{'%.2f' % amount} || #{'%.2f' % @balance}")
   end
 
 end
