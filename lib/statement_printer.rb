@@ -4,7 +4,7 @@ module StatementPrinter
 
   def self.print_statement(statement)
     add_header_row(statement)
-    statement.each { |row|
+    statement.sort.reverse.each { |row|
       puts row
     }
   end

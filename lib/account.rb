@@ -25,13 +25,8 @@ class Account
   private
 
   def update_statement(date, amount)
-
     amount > 0 ? @statement.push("#{date} || #{'%.2f' % amount} || || #{'%.2f' % @balance}") :
                 @statement.push("#{date} || || #{'%.2f' % amount} || #{'%.2f' % @balance}")
-  end
-
-  def add_header_row
-    @statement.unshift(HEADER)
   end
 
 end
