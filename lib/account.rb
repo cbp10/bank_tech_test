@@ -6,6 +6,7 @@ class Account
   end
 
   def deposit(amount, date)
+    @balance += amount
   end
 
 end

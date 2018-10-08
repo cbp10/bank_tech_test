@@ -7,6 +7,8 @@ describe Account do
 
   it 'should increase balance when deposit is made' do
     expect(account).to respond_to(:deposit).with(2).arguments
+    account.deposit(1000, "10/01/2012")
+    expect(account.balance).to eq 1000
   end
 
 end
