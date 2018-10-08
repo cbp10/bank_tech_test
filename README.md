@@ -16,6 +16,7 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
+Users can make deposits, withdrawals and print their statement.
 Users can interact with this via a REPL, e.g. irb, as follows:
 ```
 2.5.1 :001 > a = Account.new
