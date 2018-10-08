@@ -3,9 +3,15 @@ module StatementPrinter
   HEADER = "date || credit || debit || balance"
 
   def self.print_statement(statement)
-    add_header_row(statement)
-    statement.sort.reverse_each { |row|
-      puts row
+    transactions = []
+    statement.each { |row|
+      row[:credit] ?
+      transactions.push("#{row[:date]} || #{'%.2f' %row[:amount]} || || #{'%.2f' %row[:balance]}") :
+      transactions.push("#{row[:date]} || || #{'%.2f' %row[:amount]} || #{'%.2f' %row[:balance]}")
+    } 
+    add_header_row(transactions)
+    transactions.sort.reverse_each { |transaction|
+      puts transaction
     }
   end
 

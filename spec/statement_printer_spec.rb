@@ -1,8 +1,8 @@
 require 'statement_printer'
 describe StatementPrinter do
   subject(:printer) { described_class }
-  let(:statement) { ["10/01/2012 || 1000.00 || || 1000.00"] }
-  let(:statement_unordered) { ["10/01/2012 || 1000.00 || || 1000.00", "14/01/2012 || || 500.00 || 1500.00", "11/01/2012 || 1000.00 || || 2000.00"] }
+  let(:statement) { [{amount: 1000, balance: 1000, credit: true, date: "10/01/2012"}] }
+  let(:statement_unordered) { [{amount: 1000, balance: 1000, credit: true, date: "10/01/2012" }, {amount: 500, balance: 1500, credit: false, date: "14/01/2012" }, {amount: 1000, balance: 2000, credit: true, date: "11/01/2012" }] }
 
   it 'should have headers in top row' do
     expect { printer.print_statement([]) }.to output("date || credit || debit || balance\n").to_stdout
