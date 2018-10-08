@@ -22,11 +22,10 @@ describe 'transactions' do
     allow(Time).to receive(:now).and_return(DateTime.new(2012, 01, 14))
     client_account.withdrawal(500)
 
-    expect { client_account.print_statement }.to output(
-        "date || credit || debit || balance\n"\
-        "14/01/2012 || || 500.00 || 2500.00\n"\
-        "13/01/2012 || 2000.00 || || 3000.00\n"\
-        "10/01/2012 || 1000.00 || || 1000.00\n"
-      ).to_stdout
+    expect { client_account.print_statement }.to output("date || credit || debit || balance\n"\
+                                                "14/01/2012 || || 500.00 || 2500.00\n"\
+                                                "13/01/2012 || 2000.00 || || 3000.00\n"\
+                                                "10/01/2012 || 1000.00 || || 1000.00\n"
+                                                ).to_stdout
   end
 end
