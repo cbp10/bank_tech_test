@@ -33,15 +33,15 @@ Users can interact with this via a REPL, e.g. irb, as follows:
 2.5.1 :001 > require './lib/account'
  => true 
 2.5.1 :002 > a = Account.new
- => #<Account:0x00007fa1c99f7ed8 @balance=0, @statement=[], @printer=StatementPrinter> 
-2.5.1 :003 > a.deposit(100, "12/12/2012")
- => ["12/12/2012 || 100.00 || || 100.00"] 
-2.5.1 :004 > a.withdrawal(50, "13/12/2012")
- => ["12/12/2012 || 100.00 || || 100.00", "13/12/2012 || || 50.00 || 50.00"] 
+ => #<Account:0x00007fa4ea1cb920 @balance=0, @statement=[]> 
+2.5.1 :003 > a.deposit(1000)
+ => [{:amount=>1000, :balance=>1000, :credit=>true, :date=>"08/10/2018"}] 
+2.5.1 :004 > a.withdrawal(200)
+ => [{:amount=>1000, :balance=>1000, :credit=>true, :date=>"08/10/2018"}, {:amount=>200, :balance=>800, :credit=>false, :date=>"08/10/2018"}] 
 2.5.1 :005 > a.print_statement
 date || credit || debit || balance
-13/12/2012 || || 50.00 || 50.00
-12/12/2012 || 100.00 || || 100.00
+08/10/2018 || || 200.00 || 800.00
+08/10/2018 || 1000.00 || || 1000.00
 ```
 Note - Transactions should be added in date order to keep the balance accurate, and clients have an unlimited overdraft!
 
