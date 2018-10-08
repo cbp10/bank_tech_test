@@ -8,14 +8,14 @@ class Account
     @printer = printer
   end
 
-  def deposit(amount, date)
+  def deposit(amount)
     @balance += amount
-    update_statement(date, amount, "credit")
+    update_statement(amount, "credit")
   end
 
-  def withdrawal(amount, date)
+  def withdrawal(amount)
     @balance -= amount
-    update_statement(date, amount, "debit")
+    update_statement(amount, "debit")
   end
 
   def print_statement
@@ -24,10 +24,10 @@ class Account
 
   private
 
-  def update_statement(date, amount, type)
+  def update_statement(amount, type)
     type == "credit" ? 
-    @statement.push("#{date} || #{'%.2f' % amount} || || #{'%.2f' % @balance}") :
-    @statement.push("#{date} || || #{'%.2f' % amount} || #{'%.2f' % @balance}")
+    @statement.push(" || #{'%.2f' % amount} || || #{'%.2f' % @balance}") :
+    @statement.push(" || || #{'%.2f' % amount} || #{'%.2f' % @balance}")
   end
 
 end

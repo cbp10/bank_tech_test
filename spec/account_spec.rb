@@ -6,20 +6,20 @@ describe Account do
   end
 
   it 'should increase balance when deposit is made' do
-    expect(account).to respond_to(:deposit).with(2).arguments
-    account.deposit(1000, "10/01/2012")
+    expect(account).to respond_to(:deposit).with(1).argument
+    account.deposit(1000)
     expect(account.balance).to eq 1000
   end
 
   it 'should decrease balance when withdrawal is made' do
-    expect(account).to respond_to(:withdrawal).with(2).arguments
-    account.withdrawal(500, "14/01/2012")
+    expect(account).to respond_to(:withdrawal).with(1).argument
+    account.withdrawal(500)
     expect(account.balance).to eq(-500)
   end
 
   it 'should store transaction row' do
-    account.deposit(1000, "10/01/2012")
-    expect(account.statement).to include("10/01/2012 || 1000.00 || || 1000.00")
+    account.deposit(1000)
+    expect(account.statement).to include(" || 1000.00 || || 1000.00")
   end
 
   it 'should print statement' do
