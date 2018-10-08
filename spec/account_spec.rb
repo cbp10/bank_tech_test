@@ -21,9 +21,13 @@ describe Account do
     expect(account.statement[0]).to include(amount: 1000, balance: 1000)
   end
 
+  let(:printer_module) { double(:printer_module) }
+
   it 'should print statement' do
     expect(account).to respond_to(:print_statement)
-    expect { account.print_statement }.to output("date || credit || debit || balance\n").to_stdout
+    statement = [] 
+    expect(printer_module).to receive(:print_statement).with(statement)
+    account.print_statement(printer_module)
   end
 
 end
