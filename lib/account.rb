@@ -10,6 +10,7 @@ class Account
   end
 
   def withdrawal(amount, date)
+    @balance -= amount
   end
 
 end
