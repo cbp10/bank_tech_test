@@ -43,5 +43,5 @@ date || credit || debit || balance
 08/10/2018 || || 200.00 || 800.00
 08/10/2018 || 1000.00 || || 1000.00
 ```
-Note - Transactions should be added in date order to keep the balance accurate, and clients have an unlimited overdraft!
+Note - Clients have an unlimited overdraft!
 
