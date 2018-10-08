@@ -18,13 +18,13 @@ date || credit || debit || balance
 ### Installing
 
 ```
-git clone https://github.com/cbp10/bank_tech_test.git
-cd bank_tech_test
-bundle
+$ git clone https://github.com/cbp10/bank_tech_test.git
+$ cd bank_tech_test
+$ bundle
 ```
 Tests can be run using RSpec in the project directory
 ```
-rspec
+$ rspec
 ```
 
 Users can make deposits, withdrawals and print their statement.
