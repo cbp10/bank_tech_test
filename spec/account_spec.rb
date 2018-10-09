@@ -3,15 +3,11 @@ describe Account do
   subject(:account) { described_class.new }
 
   it 'should increase balance when deposit is made' do
-    expect(account).to respond_to(:deposit).with(1).argument
-    expect(account.balance).to eq 0
     account.deposit(1000)
     expect(account.balance).to eq 1000
   end
 
   it 'should decrease balance when withdrawal is made' do
-    expect(account).to respond_to(:withdrawal).with(1).argument
-    expect(account.balance).to eq 0
     account.withdrawal(500)
     expect(account.balance).to eq(-500)
   end

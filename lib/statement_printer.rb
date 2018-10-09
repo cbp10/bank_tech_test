@@ -6,8 +6,8 @@ module StatementPrinter
     transactions = []
     statement.each { |row|
       row[:credit] ?
-      transactions.push("#{row[:date]} || #{'%.2f' %row[:amount]} || || #{'%.2f' %row[:balance]}") :
-      transactions.push("#{row[:date]} || || #{'%.2f' %row[:amount]} || #{'%.2f' %row[:balance]}")
+      transactions.push("#{row[:date].strftime("%d/%m/%Y")} || #{'%.2f' %row[:amount]} || || #{'%.2f' %row[:balance]}") :
+      transactions.push("#{row[:date].strftime("%d/%m/%Y")} || || #{'%.2f' %row[:amount]} || #{'%.2f' %row[:balance]}")
     } 
     add_header_row(transactions)
     transactions.sort.reverse_each { |transaction|
