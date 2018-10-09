@@ -27,21 +27,27 @@ Tests can be run using RSpec in the project directory
 $ rspec
 ```
 
-Users can make deposits, withdrawals and print their statement.
+Users can make deposits, withdrawals and print their statement. Amounts being deposited or withdrawn must be a numerical value, and withdrawals can only be made if there is enough money in the account.
+
+
 Users can interact with this via a REPL, e.g. irb, as follows:
 ```
 2.5.1 :001 > require './lib/account'
  => true 
 2.5.1 :002 > a = Account.new
- => #<Account:0x00007fa4ea1cb920 @balance=0, @statement=[]> 
+ => #<Account:0x00007f8e3a14f3c8 @balance=0, @statement=[], @printer=StatementPrinter> 
 2.5.1 :003 > a.deposit(1000)
- => [{:amount=>1000, :balance=>1000, :credit=>true, :date=>"08/10/2018"}] 
-2.5.1 :004 > a.withdrawal(200)
- => [{:amount=>1000, :balance=>1000, :credit=>true, :date=>"08/10/2018"}, {:amount=>200, :balance=>800, :credit=>false, :date=>"08/10/2018"}] 
-2.5.1 :005 > a.print_statement
+ => [{:amount=>1000, :balance=>1000, :credit=>true, :date=>2018-10-09 12:41:43 +0100}] 
+2.5.1 :004 > a.withdrawal(500)
+ => [{:amount=>1000, :balance=>1000, :credit=>true, :date=>2018-10-09 12:41:43 +0100}, {:amount=>500, :balance=>500, :credit=>false, :date=>2018-10-09 12:41:55 +0100}] 
+2.5.1 :005 > a.deposit("cash")
+Traceback (most recent call last):
+        3: from /Users/rashikapatel/.rvm/rubies/ruby-2.5.1/bin/irb:11:in `<main>'
+        2: from (irb):5
+        1: from /Users/rashikapatel/Documents/Projects/weekly/bank_tech_test/lib/account.rb:12:in `deposit'
+RuntimeError (Cannot make deposit: Value not recognised)
+2.5.1 :006 > a.print_statement
 date || credit || debit || balance
-08/10/2018 || || 200.00 || 800.00
-08/10/2018 || 1000.00 || || 1000.00
+09/10/2018 || || 500.00 || 500.00
+09/10/2018 || 1000.00 || || 1000.00
 ```
-Note - Clients have an unlimited overdraft!
-
