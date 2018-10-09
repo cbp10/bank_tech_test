@@ -1,6 +1,6 @@
 require_relative 'statement_printer'
 class Account
-  attr_reader :balance, :statement, :printer
+  attr_reader :balance
 
   def initialize(balance = 0, printer = StatementPrinter)
     @balance = balance
@@ -18,11 +18,12 @@ class Account
     update_statement(amount, false)
   end
 
-  def print_statement()
+  def print_statement
     printer.print_statement(statement)
   end
 
   private
+  attr_reader :statement, :printer
 
   def update_statement(amount, credit)
     @statement.push( {amount: amount, balance: @balance, credit: credit, date: Time.now } )
