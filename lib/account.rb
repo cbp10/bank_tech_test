@@ -14,6 +14,7 @@ class Account
   end
 
   def withdrawal(amount)
+    fail "Cannot make withdrawal: Not enough funds in account" if amount > balance
     @balance -= amount
     update_statement(amount, false)
   end

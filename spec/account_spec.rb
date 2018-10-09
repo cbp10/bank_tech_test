@@ -9,8 +9,13 @@ describe Account do
   end
 
   it 'should decrease balance when withdrawal is made' do
+    account.deposit(1000)
     account.withdrawal(500)
-    expect(account.balance).to eq(-500)
+    expect(account.balance).to eq(500)
+  end
+
+  it 'should raise error if withdrawal is made with not enough funds in account' do
+    expect { account.withdrawal(500) }.to raise_error "Cannot make withdrawal: Not enough funds in account"
   end
 
   it 'should print statement' do 
