@@ -33,7 +33,8 @@ class Account
   end
 
   def invalid_amount(amount)
-    amount.is_a? String
+    return true if amount.is_a? String 
+    amount.round(2) != amount
   end
 
 end
